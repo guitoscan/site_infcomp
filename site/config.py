@@ -1,6 +1,4 @@
-email = str('contato.guitoscansilva@gmail.com')
-senha = str("yvzn ojus mxne rkvd")
+## Inserir informações quando realizar o deploy
 
-
-print(email)
-print(senha)
+email = str('email@gmail.com') 
+senha = str("AppPassword")
