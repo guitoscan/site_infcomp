@@ -528,10 +528,17 @@ ul.email li i {
      background-color: #fff;
      padding: auto;
    }
-   .about .titlepage::before {
-     border: none;
-     display: block; /* Adicione isso para transformar o ::before em um elemento de bloco */
-     margin-bottom: 20px;
+.about .titlepage::before {
+     content: '';
+    display: block;
+    width: 100%;
+    height: 10px;
+    background-color: #2e2f34; /* Cor de fundo */
+    position: absolute;
+    top: 90;
+    left: 80;
+    z-index: 1; /* Garante que o pseudo-elemento fique atrás do conteúdo */
+
 }
 .about .titlepage {
      padding-bottom: 0;
@@ -869,6 +876,14 @@ ul.email li i {
 
 /** end testimonial **/
 
+
+/** card **/
+
+.card-img {
+     width: 50%;
+     height: auto;
+     display: block;
+ }
 
 /** footer **/
 
