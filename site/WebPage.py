@@ -1,32 +1,32 @@
 #!/bin/python3
 
 from flask import Flask, render_template, redirect, request, flash
-from flask_mail import Mail, Message
-from config import email, senha
+# from flask_mail import Mail, Message
+# from config import email, senha
 
 
 app = Flask(__name__)
 
 app.secret_key = "super secret key"
 
-mail_settings = {
-    "MAIL_SERVER": 'smtp.gmail.com',
-    "MAIL_PORT": 465,
-    "MAIL_USE_TLS": False,
-    "MAIL_USE_SSL": True,
-    "MAIL_USERNAME": email,
-    "MAIL_PASSWORD": senha
-}
+# mail_settings = {
+#     "MAIL_SERVER": 'smtp.gmail.com',
+#     "MAIL_PORT": 465,
+#     "MAIL_USE_TLS": False,
+#     "MAIL_USE_SSL": True,
+#     "MAIL_USERNAME": email,
+#     "MAIL_PASSWORD": senha
+# }
 
-app.config.update(mail_settings)
-mail = Mail(app)
+# app.config.update(mail_settings)
+# mail = Mail(app)
 
 
-class Contato:
-    def __init__(self, nome, email, mensagem):
-        self.nome = nome,
-        self.email = email,
-        self.mensagem = mensagem
+# class Contato:
+#     def __init__(self, nome, email, mensagem):
+#         self.nome = nome,
+#         self.email = email,
+#         self.mensagem = mensagem
 
 @app.route("/")
 def index():
@@ -49,34 +49,34 @@ def contact():
     return render_template("contact.html")
 
 
-@app.route('/send', methods=['GET','POST'])
-def send():
-    if request.method == 'POST':
-        formContato = Contato(
-            request.form['nome'],
-            request.form['email'],
-            request.form['message']
-        )
+# @app.route('/send', methods=['GET','POST'])
+# def send():
+#     if request.method == 'POST':
+#         formContato = Contato(
+#             request.form['nome'],
+#             request.form['email'],
+#             request.form['message']
+#         )
 
-        msg = Message(
-            subject = f'{formContato.nome} te enviou uma mensagem',
-            sender = app.config.get("MAIL_USERNAME"),
-            recipients = ['guitoscansilva@gmail.com'],
-            body = f'''
+#         msg = Message(
+#             subject = f'{formContato.nome} te enviou uma mensagem',
+#             sender = app.config.get("MAIL_USERNAME"),
+#             recipients = ['guitoscansilva@gmail.com'],
+#             body = f'''
 
-            {formContato.nome}, email {formContato.email}, enviou uma
-            mensagem pelo site
+#             {formContato.nome}, email {formContato.email}, enviou uma
+#             mensagem pelo site
 
-            segue a mensagem:
+#             segue a mensagem:
 
-            {formContato.mensagem}
+#             {formContato.mensagem}
 
-            '''
-        )
+#             '''
+#         )
 
-        mail.send(msg)
-        flash("Mensagem enviada com sucesso!")
-    return redirect('/')
+#         mail.send(msg)
+#         flash("Mensagem enviada com sucesso!")
+#     return redirect('/')
 
 
 if __name__ == '__main__':
