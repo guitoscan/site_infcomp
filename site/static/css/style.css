@@ -559,12 +559,12 @@ ul.email li i {
      position: relative;
  }
 
- .container img {
+.about .container img {
      max-width: 150px;
      margin-right: 20px;
  }
 
- .container .text {
+.about .container .text {
      flex: 1;
  }
 
