@@ -26,13 +26,13 @@ Neste documento pretendo apresentar em detalhes o processo de construção dessa
 
 ## Introdução
 
-A primeira decisão tomada é de que o site funcionaria com Flask. A escolha desse framework possibilitaria o uso de python e facilitaria a criação de apps dentro do próprio site, que também servirá, num futuro próximo, como meu portfólio pessoal.
+A primeira decisão tomada foi de que o site funcionaria com Flask. A escolha desse framework possibilitaria o uso de python e facilitaria a criação de apps dentro do próprio site, que também servirá, num futuro próximo, como meu portfólio pessoal.
 
-O uso de flask demanda de um serviço de computação em nuvem visto que a página deve ser acessada externamente. Para hospedar a página foi necessária a criação de um servidor específico. O serviço escolhido para este trabalho foi o da **Linode**, que oferecia $100 por dois meses para o uso de suas ferramentas de computação em nuvem. Também será necessário criar um servidor *WSGI* que possa rodar o flask *"em produção"*, fora do modo *debug*
+O uso de flask demanda de um serviço de computação em nuvem visto que a página deve ser acessada externamente. Para hospedar a página foi necessária a criação de um servidor específico. O serviço escolhido para este trabalho foi o da **Linode** pois oferecia $100 por dois meses para o uso de suas ferramentas de computação em nuvem, tempo suficiente para a entrega do trabalho. Também será necessário criar um servidor *WSGI* que possa rodar o flask *"em produção"*, fora do modo *debug*
 
 O layout da página foi escolhido através de pesquisas na internet. Um dos requisitos é que a página não fosse um "poster estático", então optei por um layout multi-páginas, o que demandou um pouco de estudo a respeito de HTML e CSS para ajustes no modelo escolhido.
 
-Por fim, outros objetivo foi o de rotear via DNS o endereço de ip da máquina virtual criada através do domínio adquirido (www.guitoscansilva.site)
+Por fim, finalizando o desafio, a página foi provisionada no servidor na nuvem e poderá ser acessada até a avaliação por parte do professor, mas seu projeto está salvo e disponível em um [repositório no Github](https://github.com/guitoscan/site_infcomp)
 
 ## Criação da página com Flask
 
@@ -68,13 +68,13 @@ Houve uma pequena dificuldade no começo, mas devido ao conhecimento básico com
 
 ## Upload do site
 
-Após a construção do front-end estar pronta, era necessário providenciar um local para publicar a página. 
+Após a construção do *front-end* estar pronto, era necessário providenciar um local para publicar a página. 
 
-O primeiro passo foi adquirir um domínio (www.guitoscansilva.site) na plataforma *GoDaddy* e em seguida criar uma conta na *Linode*, plataforma que fornece o serviço de computação em nuvem (e ofereceu US$100 para utilizar seus serviços por 60 dias). Na *GoDaddy* redirecionei os servidores de DNS para os servidores da *Linode* apenas por precaução.
+O primeiro passo foi adquirir um domínio (www.guitoscansilva.site) na plataforma ***GoDaddy*** e em seguida criar uma conta na **Linode**, plataforma que fornece o serviço de computação em nuvem (e ofereceu US$100 para utilizar seus serviços por 60 dias). Na ***GoDaddy*** redirecionei os servidores de DNS para os servidores da **Linode** apenas por precaução.
 
 ### SSH e SCP
 
-Para acessar a máquina remota criada na *Linode* foi necessário utilizar SSH. Após as configurações básicas do python para rodar o site em ambiente de teste foi necessário fazer o upload dos arquivos para o servidor e neste caso foi utilizado o SCP (porque vacilei nesse momento e já poderia estar utilizando o github).
+Para acessar a máquina remota criada na **Linode** foi necessário utilizar SSH. Após as configurações básicas do python para rodar o site em ambiente de teste foi necessário fazer o upload dos arquivos para o servidor e neste caso foi utilizado o SCP (porque vacilei nesse momento e já poderia estar utilizando o github).
 
 Apenas como anedota, me habituei a utilizar o "ESC" + :wq" do VIM devido as correções que tive que fazer no códigos do servidor. 
 
@@ -116,7 +116,7 @@ if __name__ == "__main__":
 
 ### Gunicorn
 
-O Gunicorn (Green Unicorn) é um servidor web baseado em Python. No caso do site ele é o responsável por receber as requisições via HTTP e, através da WSGI, entregar à aplicação em Flask, assim como retorna as informações da aplicação via HTTP.
+O Gunicorn (*"Green Unicorn"*) é um servidor web baseado em Python. No caso do site ele é o responsável por receber as requisições via HTTP e, através da WSGI, entregar à aplicação em Flask, assim como retorna as informações da aplicação via HTTP.
 
 Para utilizar no projeto foi necessária a criação de um ambiente em Python com todas as bibliotecas necessárias, além da criação de um *service* no servidor para manter o Gunicorn sempre operacional.
 
